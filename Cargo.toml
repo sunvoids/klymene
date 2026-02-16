@@ -1,0 +1,13 @@
+[package]
+name = "klymene"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "klymene-srv"
+path = "klymene-srv/main.rs"
+test = true
+
+[[bin]]
+name = "klymene-tty"
+path = "klymene-tty/main.rs"

@@ -1,0 +1,14 @@
+*
+!.gitignore
+!Cargo.toml
+!Cargo.lock
+!flake.nix
+!flake.lock
+!klymene-tty/
+!klymene-tty/**/
+!klymene-tty/**/*.rs
+!klymene-tty/Cargo.{toml,lock}
+!klymene-srv/
+!klymene-srv/**/
+!klymene-srv/**/*.rs
+!klymene-srv/Cargo.{toml,lock}
