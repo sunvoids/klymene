@@ -5,3 +5,11 @@ version = 4
 [[package]]
 name = "klymene"
 version = "0.1.0"
+
+[[package]]
+name = "klymene-srv"
+version = "0.1.0"
+
+[[package]]
+name = "klymene-tty"
+version = "0.1.0"
