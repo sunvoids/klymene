@@ -15,3 +15,6 @@ test = true
 [[bin]]
 name = "klymene-tty"
 path = "klymene-tty/src/main.rs"
+
+[dependencies]
+tokio = { version = "1.49.0", features = ["full"] }
