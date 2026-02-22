@@ -5,16 +5,16 @@ edition = "2024"
 
 [workspace]
 resolver = "3"
-members = ["klymene-srv", "klymene-tty"]
+members = ["klymene_srv", "klymene_tty"]
 
 [[bin]]
-name = "klymene-srv"
-path = "klymene-srv/src/main.rs"
+name = "klymene_srv"
+path = "klymene_srv/src/main.rs"
 test = true
 
 [[bin]]
-name = "klymene-tty"
-path = "klymene-tty/src/main.rs"
+name = "klymene_tty"
+path = "klymene_tty/src/main.rs"
 
 [dependencies]
 tokio = { version = "1.49.0", features = ["full"] }

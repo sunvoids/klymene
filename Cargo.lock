@@ -38,14 +38,14 @@ dependencies = [
 ]
 
 [[package]]
-name = "klymene-srv"
+name = "klymene_srv"
 version = "0.1.0"
 dependencies = [
  "tokio",
 ]
 
 [[package]]
-name = "klymene-tty"
+name = "klymene_tty"
 version = "0.1.0"
 
 [[package]]
