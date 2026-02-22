@@ -4,9 +4,9 @@
 !Cargo.lock
 !flake.nix
 !flake.lock
-!klymene_tty/
-!klymene_tty/**/
-!klymene_tty/**/*.rs
+!klymene_tui/
+!klymene_tui/**/
+!klymene_tui/**/*.rs
 !klymene_tty/Cargo.{toml,lock}
 !klymene_srv/
 !klymene_srv/**/
