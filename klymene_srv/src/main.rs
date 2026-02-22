@@ -1,11 +1,12 @@
+use protocol::add;
 #[allow(dead_code)] // TEMP
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tokio::net::TcpStream;
-
 const SOULFIND_ADDRESS: &'static str = "127.0.0.1:2242";
 
 #[tokio::main]
 async fn main() -> std::io::Result<()> {
+    println!("{}", add(1, 2));
     let mut stream = TcpStream::connect(SOULFIND_ADDRESS).await?;
     let login_req = LoginRequest {
         username: "username".into(),

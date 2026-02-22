@@ -5,16 +5,36 @@ edition = "2024"
 
 [workspace]
 resolver = "3"
-members = ["klymene_srv", "klymene_tty"]
+members = [
+  "klymene_srv",
+  "klymene_srv/protocol",
+  "klymene_srv/protocol_macros",
+  
+  "klymene_tty",
+]
 
+# Service - handles Soulseek protocol, connections between the server and peers.
+# Uses Unix socket to communicate with the client
 [[bin]]
 name = "klymene_srv"
 path = "klymene_srv/src/main.rs"
 test = true
 
+# Proc macros for deriving implementations of protocol requests and *maybe* responses.
+[lib]
+name = "protocol_macros"
+path = "klymene_srv/protocol_macros/src/lib.rs"
+proc-macro = true
+
+# Client - ratatui-based interface to interact with the service (search for files,
+# download them, chat with peers etc.)
 [[bin]]
 name = "klymene_tty"
 path = "klymene_tty/src/main.rs"
 
 [dependencies]
+protocol = { path = "./klymene_srv/protocol" }
+
 tokio = { version = "1.49.0", features = ["full"] }
+quote = "1.0.44"
+syn = "2.0.117"

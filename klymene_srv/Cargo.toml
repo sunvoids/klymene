@@ -4,4 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+protocol = { path = "./protocol" }
+protocol_macros = { path = "./protocol_macros" }
+
 tokio = { version = "1.49.0", features = ["full"] }
