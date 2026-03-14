@@ -13,6 +13,8 @@ pub async fn run(
     peer_cmd_tx: mpsc::Sender<PeerCommand>,
     server_cmd_tx: mpsc::Sender<ServerCommand>,
 ) {
+    tokio::time::sleep(std::time::Duration::from_secs(2)).await;
+    server_cmd_tx.send(ServerCommand::Login).await.unwrap();
     while let Some(event) = event_rx.recv().await {
         match event {
             Event::UnixMessage(msg) => {

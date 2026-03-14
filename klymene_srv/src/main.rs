@@ -3,6 +3,7 @@ use tokio::sync::mpsc;
 use crate::connections::*;
 
 mod connections;
+mod slsk;
 
 // Main thread:
 // - creates and holds handles to server and peer threads,
