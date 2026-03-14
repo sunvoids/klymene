@@ -8,13 +8,12 @@ use tokio::{
 
 use crate::{
     connections::coordinator::Event,
-    slsk::coders::{Login, ProtocolMessage},
+    soulseek::coders::{Login, ProtocolMessage},
 };
 
 const SOULFIND_ADDRESS: &'static str = "127.0.0.1:2243";
 pub enum ServerCommand {
     Send(Vec<u8>),
-    Login,
 }
 
 pub async fn run(mut cmd_rx: mpsc::Receiver<ServerCommand>, event_tx: mpsc::Sender<Event>) {
@@ -46,14 +45,6 @@ pub async fn run(mut cmd_rx: mpsc::Receiver<ServerCommand>, event_tx: mpsc::Send
 
     let mut buf = [0u8; 4096];
 
-    let tmp = crate::slsk::coders::LoginRequest {
-        username: "username".into(),
-        password: "password".into(),
-        hash: "d51c9a7e9353746a6020f9602d452929".into(),
-        version_number: 160,
-        minor_version: 1,
-    };
-
     loop {
         tokio::select! {
             received = server_stream.read(&mut buf) => {
@@ -71,11 +62,6 @@ pub async fn run(mut cmd_rx: mpsc::Receiver<ServerCommand>, event_tx: mpsc::Send
                 match cmd {
                     ServerCommand::Send(data) => {
                         let _ = server_stream.write_all(&data).await;
-                    }
-                    ServerCommand::Login => {
-                        let tmp_login = Login::encode_request(&tmp);
-                        println!("{:#?}", tmp_login);
-                        let _ = server_stream.write_all(&tmp_login).await;
                     }
                 }
             }
