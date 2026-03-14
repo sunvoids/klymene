@@ -3,12 +3,12 @@ use tokio::sync::mpsc;
 use crate::connections::*;
 
 mod connections;
-mod slsk;
+mod soulseek;
 
 // Main thread:
-// - creates and holds handles to server and peer threads,
-// - manages channels of these threads and works with their info,
-// - handles Unix socket to communicate with klymene_tui,
+// - creates connection threads,
+// - creates channels for these threads, gives them to coordinator
+// - awaits on coordinator
 #[tokio::main]
 async fn main() -> std::io::Result<()> {
     let (event_tx, event_rx) = mpsc::channel(128);
