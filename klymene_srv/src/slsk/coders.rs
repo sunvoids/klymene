@@ -108,7 +108,12 @@ macro_rules! protocol_message {
                 let mut buf = Vec::new();
                 Self::CODE.encode(&mut buf);
                 req.encode(&mut buf);
-                buf
+                // TODO: could probably just push to buf 4 bytes before ecoding
+                // and later change these bytes without allocating in the below line
+                // by using .to_vec()
+                let mut buf2 = (buf.len() as u32).to_le_bytes().to_vec();
+                buf2.append(&mut buf);
+                buf2
             }
 
             fn decode_success(data: &[u8]) -> Self::Success {
